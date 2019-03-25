@@ -6,7 +6,6 @@ Created on Mon Mar 25 13:31:54 2019
 """
 import scipy.io
 
-
 inp=1
 mat_name='./mat/'+str(inp)+'.mat'
 data=scipy.io.loadmat(mat_name)
