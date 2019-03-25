@@ -7,7 +7,7 @@ Created on Sat Mar 16 12:10:22 2019
 
 import pickle
 import scipy.io
-#import _thread
+
 
 def task(inp):
     with open('./csi_frame/'+str(inp)+'.pkl','rb') as rf:
