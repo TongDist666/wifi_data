@@ -54,4 +54,3 @@ with open('1.txt','r') as data_read:
 #    print(final)
     re=reshape513(dat1)
     print(re)
-           
