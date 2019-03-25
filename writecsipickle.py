@@ -46,6 +46,7 @@ def get_csi_xwfz(datastr):
     for t in temp2:
         temp_t=t.split('+')
         result.append([complex(float(temp_t[1]),float(temp_t[2]))])
+#        之前想存成[count,相位，幅值]
 #        result.append([int(temp_t[0]),#count
 #                       float(temp_t[1]),#相位
 #                       float(temp_t[2])])#幅值
@@ -63,7 +64,7 @@ def get_format_hmsus_fromvideo(videoTimeList):
     return result
 
 #从csi读data的 list中获取规格化的数据
-#[[小时，分，秒，'毫秒'],[[count，相位，幅值]，...]     ]
+#[[小时，分，秒，'毫秒'],[[（相位+幅值j）]，...]     ]
 def get_format_data_csi(csiDataList):
     result=[]
     for gfdc in csiDataList:
@@ -92,6 +93,7 @@ def format_video_s(sStr):
             sStr='0'+sStr
         return sStr
 
+#改变矩阵的形状
 def reshape(list_in,size=1):
     if len(list_in)%size!=0:
         print('input size is wrong!!')
@@ -107,10 +109,10 @@ def reshape(list_in,size=1):
                 temp=[]
         return final_result
 
-
+#对513个数据的csi进行reshape
 def reshape513(data513):
     data_temp=reshape(data513,57)
-   
+    #csi数据的形式：[1发1收，1发2收，1发3收，2发1收，2发2收，2发3收，3发1收，3发2收，3发3收]  每一次57个复数的数据
     final_result=[]
     for c in range(57):
         temp9=[[data_temp[0][c],data_temp[1][c],data_temp[2][c]],
