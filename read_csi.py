@@ -17,4 +17,3 @@ with open('./csi_frame/'+str(f)+'.pkl','rb') as rf:
     print(csi)
     print(len(csi[0]))
     print(len(csi[0][0]))
-
